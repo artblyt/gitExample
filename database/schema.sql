@@ -121,5 +121,6 @@ INSERT INTO OrderStatusHistory (OrderID, UserID, status, date, comment) VALUES
     (4, 2, 'Новый',       '2026-10-14 10:10:00', 'Заказ оформлен'),
     (4, 2, 'Отменён',     '2026-10-14 10:40:00', 'Отменён покупателем до отправки');
 
+
 INSERT INTO Review (OrderID, UserID, rating, text, date) VALUES
     (1, 1, 5, 'Всё пришло быстро, наушники отличные', '2026-10-14 12:00:00');
