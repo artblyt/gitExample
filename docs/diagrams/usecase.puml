@@ -1,0 +1,53 @@
+@startuml usecase
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Покупатель" as Client
+actor "Менеджер" as Operator
+
+rectangle "Система учёта заказов интернет-магазина" {
+    usecase "Регистрация" as UC_Reg
+    usecase "Вход в систему" as UC_LoginC
+    usecase "Вход в систему" as UC_LoginO
+
+    usecase "Меню заказов (покупатель)" as UC_MenuC
+    usecase "Меню заказов (менеджер)" as UC_MenuO
+    usecase "Добавление менеджера" as UC_AddOp
+
+    usecase "Мои заказы" as UC_MyOrders
+    usecase "Отмена заказа" as UC_Cancel
+    usecase "Оформление заказа" as UC_Place
+    usecase "Отзыв о заказе" as UC_Review
+
+    usecase "Все заказы" as UC_AllOrders
+    usecase "Обработка заказа" as UC_Process
+    usecase "Изменение статуса" as UC_Status
+    usecase "Отправка заказа" as UC_Ship
+
+    usecase "Ввод данных заказа" as UC_InputData
+    usecase "Выбор заказа" as UC_Select
+}
+
+Client --> UC_Reg
+Client --> UC_LoginC
+Operator --> UC_LoginO
+
+UC_LoginC --> UC_MenuC
+UC_LoginO --> UC_MenuO
+UC_LoginO --> UC_AddOp
+
+UC_MenuC --> UC_MyOrders
+UC_MenuC --> UC_Cancel
+UC_MenuC --> UC_Place
+UC_MenuC --> UC_Review
+
+UC_MenuO --> UC_AllOrders
+UC_MenuO --> UC_Process
+UC_MenuO --> UC_Status
+UC_MenuO --> UC_Ship
+
+UC_Place ..> UC_InputData : <<include>>
+UC_Cancel ..> UC_MyOrders : <<include>>
+UC_Process ..> UC_AllOrders : <<include>>
+UC_Process ..> UC_Select : <<include>>
+@enduml
